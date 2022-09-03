@@ -1,0 +1,13 @@
+body {
+  margin:0;
+  background: blue;
+  overflow:hidden;
+  text-align:center;
+}
+
+/*
+# to refer to elements with a specific id
+*/
+#myCanvas{
+  background: lightgray;
+}

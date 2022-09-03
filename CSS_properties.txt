@@ -1,0 +1,11 @@
+CSS properties that aren't self explanatory
+
+Overflow:
+The overflow property specifies whether to clip content,
+render scroll bars or display overflow content when
+content overflows the element's content area.
+values: 	auto | hidden | scroll | visible | initial | inherit
+
+Margin:
+property that sets the margin on all four sides of the element
+values: 	[ length | percentage | auto ] 1 to 4 values | initial | inherit

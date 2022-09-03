@@ -1,0 +1,44 @@
+Code explanations:
+
+#Document, window, and html elements:
+- Document refers to the html file, it is the DOM document file and owns all objects.
+
+- to get elements by Id simply use the method below. Once you get html elements
+in the form of a js var, such as const below you can set the properties as such.
+
+- The window file is a step above the document object, it refers to the browser itself.
+window.document.getElementById() would also work.
+
+- window has the innerWidth and innerHeight properties and the open, close, moveTO, and resizeTo methods.
+
+
+#HTML canvas elements:
+- Every element in html has its own properties that can be modified in JS
+- The canvas element has the getContext element which returns a drawing
+context on the canvas, allowing you to put things on it through the js file.
+- The canvas context has a few useful methods
+- For this particular case, a 2d context is used
+- the beginPath method will be used to define when a particular object is starting
+to be drawn
+- the fill method can be used to fill in the object drawn with a color.
+
+
+#Allowing user interaction through key bindings
+In html <element onkeydown="myScript">
+In js you can do it two ways, you can do it via document.onkeydown = function()
+or you can do it via object.addEventListener("keydown", myScript) however this may not
+be supported by all browsers.
+
+#Simulating movement
+Helpful code snippets
+
+this.x -= Math.sin(this.angle)*this.speed;
+this.y -= Math.cos(this.angle)*this.speed;
+
+If you define an angle, you can edit that angle by some defined velocity (the turning speed of your object in that axis) and than add that angle
+scaled by the objects main axis speed and subtract that from the position.
+
+Subtract from the y if going to the top of the screen is considered going up. The speed should change by some velocity.
+
+Friction can be simulated by simply subtracting from the speed when its not zero, and than have an edge case to set the speed to
+zero when the magnitude is less than that of the friction.
