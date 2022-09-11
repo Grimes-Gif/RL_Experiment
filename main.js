@@ -14,7 +14,7 @@ const start = (canvas) => {
     //erases cars previous position, and makes canvas run from top to bottom
     canvas.height = window.innerHeight;
 
-    camera.update(ctx, 0, -car.y + canvas.height*.5);
+    camera.update(ctx, 0, -car.y + canvas.height*.7);
     road.draw(ctx);
     car.draw(ctx);
     requestAnimationFrame(animate);
@@ -22,6 +22,16 @@ const start = (canvas) => {
 
   animate();
 }
+
+
+const utility = () => {
+
+  const linearInterpolation = (A, B, t) => A + (B - A) * t
+  return {'lerp':linearInterpolation}
+
+}
+
+util = utility()
 
 const canvas = document.getElementById("myCanvas");
 start(canvas)

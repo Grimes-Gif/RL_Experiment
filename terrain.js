@@ -35,10 +35,8 @@ class Road {
     ctx.lineWidth = 5;
     ctx.strokeStyle = "white";
 
-    const lerp = (left, right, percent) => left + (right - left) * percent
-
     for (let i = 0; i <= this.numLanes; i++) {
-      const x = lerp(this.leftBorder, this.rightBorder, i / this.numLanes);
+      const x = linearInterpolation(this.leftBorder, this.rightBorder, i / this.numLanes);
 
       if (i > 0 && i < this.numLanes) {
         ctx.setLineDash([20, 20])

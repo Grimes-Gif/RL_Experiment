@@ -10,20 +10,22 @@ class Car {
     this.width = width
     this.height = height
 
-    //Make the car realistic
+    //Create physical constraints for the car
     this.speed = 0;
     this.acceleration = 0.1;
     this.maxSpeed = 2.5;
     this.friction = 0.03;
     this.angle = 0;
+    this.turningSpeed = .003;
 
     this.controls = new Controls();
+    this.fov = new FOV(30, 100, this);
   }
 
   //update the state of the car
   update() {
     this.#moveCar();
-
+    this.fov.update()
   }
 
   //movement logic
@@ -52,9 +54,9 @@ class Car {
 
       //Cars dont move horizontally, they turn, so add angular movement
       if (this.controls.left) {
-        this.angle += 0.01 * flip;
+        this.angle += this.turningSpeed * flip;
       } else if (this.controls.right) {
-        this.angle -= 0.01 * flip;
+        this.angle -= this.turningSpeed * flip;
       }
     }
 
@@ -75,17 +77,15 @@ class Car {
   //Draw car
   draw(ctx) {
 
-    //draw rotation, translate to position
+    ///draw car with x and y at the center with rotation
     ctx.save();
     ctx.translate(this.x, this.y);
     ctx.rotate(-this.angle);
-    //end rotation
 
-    //draw shape at arbitrary position
     ctx.beginPath();
     ctx.rect(
-      0,
-      0,
+      -this.width/2,
+      -this.height/2,
       this.width,
       this.height
     );
@@ -95,6 +95,8 @@ class Car {
 
     //return car to original position
     ctx.restore();
+
+    this.fov.draw(ctx);
   }
 }
 
