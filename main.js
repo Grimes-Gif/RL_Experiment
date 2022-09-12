@@ -23,15 +23,5 @@ const start = (canvas) => {
   animate();
 }
 
-
-const utility = () => {
-
-  const linearInterpolation = (A, B, t) => A + (B - A) * t
-  return {'lerp':linearInterpolation}
-
-}
-
-util = utility()
-
 const canvas = document.getElementById("myCanvas");
 start(canvas)
